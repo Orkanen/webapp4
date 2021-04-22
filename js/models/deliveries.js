@@ -21,6 +21,7 @@ let deliveries = {
     addDelivery: function() {
         console.log("Delivery made");
     },
+    product: {},
     current: {},
     save: function() {
         console.log(deliveries.current);
@@ -29,6 +30,26 @@ let deliveries = {
             method: "POST",
             url: `${deliveries.url}/deliveries`,
             body: deliveries.current
+        }).then(function() {
+            return m.request({
+                method: "GET",
+                url: `${deliveries.url}/products/${deliveries.current.product_id}
+                ?api_key=${deliveries.apiKey}`
+            }).then(function(result) {
+                let temp1 = parseInt(deliveries.current.amount);
+                let temp2 = parseInt(result.data.stock);
+
+                deliveries.product.stock = temp1 + temp2;
+                deliveries.product.id = result.data.id;
+                deliveries.product.name = result.data.name;
+                deliveries.product.api_key = deliveries.apiKey;
+            }).then(function() {
+                return m.request({
+                    method: "PUT",
+                    url: `${deliveries.url}/products`,
+                    body: deliveries.product
+                });
+            });
         }).then(function() {
             m.route.set("/deliveries");
         });
