@@ -20,14 +20,15 @@ let inForm = {
                     event.preventDefault();
                     //console.log(orders.current);
                     //console.log(orders.total);
+                    groupVisible = false;
                     invoicesModel.createInvoice(orders.current.id, orders.total);
                     orders.update();
                 }
             }, [
                 m("label.input-label", "Orders: "),
                 m("select.input", {
-                    oninput: function (e) {
-                        console.log(e.target.value.split(","));
+                    onclick: function (e) {
+                        //console.log(e.target.value.split(","));
                         orders.save(e.target.value.split(",")[0]);
                         groupVisible = true;
                     }
@@ -66,12 +67,12 @@ let inForm = {
         ]);
     },
     test: function () {
-        console.log(orders.current);
+        //console.log(orders.current);
     }
 };
 
 function orderSpecifiers(e) {
-    console.log(e);
+    //console.log(e);
     if (e.length != null && e.width != null) {
         return [
             m("p", "Length: ", e.length),

@@ -39,8 +39,8 @@ let orders = {
                 orders.current_items.push(element)
                 orders.total += (element.price * element.amount)
             });
-            console.log(orders.total);
-            console.log(orders.current_items);
+            //console.log(orders.total);
+            //console.log(orders.current_items);
             orders.current = result.data;
         });
     },

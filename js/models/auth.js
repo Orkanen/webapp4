@@ -55,7 +55,7 @@ let auth = {
                 auth.token = result.data.token;
                 return m.route.set("/home");
               });
-        });                
+        });
     }
 };
 
