@@ -2,6 +2,7 @@ import m from "mithril";
 
 import { orders } from "../models/orders.js";
 import { deliveries } from "../models/deliveries.js";
+import { invoicesModel } from "../models/invoices.js";
 
 var groupVisible = false;
 
@@ -17,7 +18,10 @@ let inForm = {
             m("form", {
                 onsubmit: function (event) {
                     event.preventDefault();
-                    console.log(event);
+                    //console.log(orders.current);
+                    //console.log(orders.total);
+                    invoicesModel.createInvoice(orders.current.id, orders.total);
+                    orders.update();
                 }
             }, [
                 m("label.input-label", "Orders: "),
