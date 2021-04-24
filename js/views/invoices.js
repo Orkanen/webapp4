@@ -23,16 +23,27 @@ let invoiceTable = {
                     m("td", invoice.creation_date),
                     m("td", invoice.due_date)
                 ]);
-            }))
+            })),
+            m(m.route.Link, {
+                selector: "button",
+                href: "/inform",
+                class: "form-button"
+            }, "Add Invoice")
         ];
     }
 };
 
 let noData = {
     view: function() {
-        return m("p", "Det har inga fakturor!");
+        return [m("p", "Det har inga fakturor!"),
+                m(m.route.Link, {
+                    selector: "button",
+                    href: "/inform",
+                    class: "form-button"
+                }, "Add Invoice")
+        ];
     }
-}
+};
 
 let invoices = {
     oninit: invoicesModel.getInvoices,
@@ -42,6 +53,6 @@ let invoices = {
             invoicesModel.invoices.length > 0 ? m(invoiceTable) : m(noData)
         ];
     }
-}
+};
 
 export { invoices };

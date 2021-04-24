@@ -15,6 +15,7 @@ let invoicesModel = {
                 'x-access-token': auth.token
             }
         }).then(function(result) {
+            console.log(result.data);
             invoicesModel.invoices = result.data
         });
     }

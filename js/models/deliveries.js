@@ -28,12 +28,12 @@ let deliveries = {
         deliveries.current.api_key = deliveries.apiKey;
         return m.request({
             method: "POST",
-            url: `${deliveries.url}/deliveries`,
+            url: `${deliveries.url}deliveries`,
             body: deliveries.current
         }).then(function() {
             return m.request({
                 method: "GET",
-                url: `${deliveries.url}/products/${deliveries.current.product_id}
+                url: `${deliveries.url}products/${deliveries.current.product_id}
                 ?api_key=${deliveries.apiKey}`
             }).then(function(result) {
                 let temp1 = parseInt(deliveries.current.amount);
@@ -46,11 +46,13 @@ let deliveries = {
             }).then(function() {
                 return m.request({
                     method: "PUT",
-                    url: `${deliveries.url}/products`,
+                    url: `${deliveries.url}products`,
                     body: deliveries.product
                 });
             });
         }).then(function() {
+            deliveries.product = {};
+            deliveries.current = {};
             m.route.set("/deliveries");
         });
     }

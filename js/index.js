@@ -8,14 +8,29 @@ import { home } from "./views/home";
 import { form } from "./views/form";
 import { invoices } from "./views/invoices.js";
 import { login } from "./views/login.js";
+import { inForm } from "./views/invoiceForm.js";
+import { register } from "./views/register.js";
+import { nohome } from "./views/nohome.js";
 
 import { auth } from "./models/auth.js";
 //import { year } from "./views/year";
 
 m.route(document.body, "/", {
     "/": {
+        onmatch: function() {
+            if (auth.token) {
+                return home;
+            }
+
+            return m.route.set("/home");
+        },
+        render: function (vnode) {
+            return m(menu, vnode);
+        }
+    },
+    "/home": {
         render: function() {
-            return m(menu, m(home));
+            return m(menu, m(nohome));
         }
     },
     "/deliveries": {
@@ -28,6 +43,11 @@ m.route(document.body, "/", {
             return m(menu, m(form));
         }
     },
+    "/inform": {
+        render: function() {
+            return m(menu, m(inForm));
+        }
+    },
     "/invoices": {
         onmatch: function() {
             if (auth.token) {
@@ -38,6 +58,11 @@ m.route(document.body, "/", {
         },
         render: function (vnode) {
             return m(menu, vnode);
+        }
+    },
+    "/register": {
+        render: function() {
+            return m(menu, m(register));
         }
     },
     "/login": {

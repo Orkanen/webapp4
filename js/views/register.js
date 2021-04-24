@@ -1,15 +1,15 @@
 import m from "mithril";
-
 import { auth } from "../models/auth.js";
 
-let login = {
+let register = {
+
     view: function () {
         return [
             m("h1", "Log In"),
             m("form", {
                 onsubmit: function (event) {
                     event.preventDefault();
-                    auth.login();
+                    auth.register();
                 }
             }, [
                 m("lavel.input-label", "E-post"),
@@ -26,15 +26,10 @@ let login = {
                     },
                     value: auth.password
                 }),
-                m("input[type=submit][value=Log in].button", "Log In"),
-                m(m.route.Link, {
-                    selector: "button",
-                    href: "/register",
-                    class: "form-button"
-                }, "Register User")
+                m("input[type=submit][value=Register].button", "Register")
             ])
         ];
     }
-}
+};
 
-export { login };
+export { register };
