@@ -15,7 +15,7 @@ let inForm = {
     view: function () {
         return m("main.container", [
             m("h1", "Ny leverans"),
-            m("form", {
+            m("form.login-form", {
                 onsubmit: function (event) {
                     event.preventDefault();
                     //console.log(orders.current);
@@ -36,28 +36,32 @@ let inForm = {
                     return m("option", {value: [order.id, order.name]},
                         order.name);
                 })),
-                m("input[type=submit][value=Submit].button", "Submit")
+                m("input[type=submit][value=Submit].button.form-button", "Submit")
             ]),
             groupVisible ? m.fragment ({oninit: log}, [
                 m("div.invoice",
-                    m("p", orders.current.id),
-                    m("p", orders.current.name),
-                    m("p", orders.current.address),
-                    m("p", orders.current.zip),
-                    m("p", orders.current.city),
-                    m("p", orders.current.country),
-                    m("p", orders.current.status),
+                    m("tr",
+                        m("p", orders.current.id),
+                        m("p", orders.current.name),
+                        m("p", orders.current.address),
+                        m("p", orders.current.zip),
+                        m("p", orders.current.city),
+                        m("p", orders.current.country),
+                        m("p", orders.current.status)
+                    )
                 ),
 
                 m("div.deliveries", orders.current_items.map(function (order) {
                     return m("div.invoice", [
-                        m("p", order.name),
-                        m("p", order.article_number),
-                        m("p", "Amount: ", order.amount),
-                        m("p", order.description),
-                        m("p", "Price: ", order.price),
-                        m("p", "Stock: ", order.stock),
-                        m("p", orderSpecifiers(JSON.parse(order.specifiers)))
+                        m("tr",
+                              m("p", order.name),
+                              m("p", order.article_number),
+                              m("p", "Amount: ", order.amount),
+                              m("p", order.description),
+                              m("p", "Price: ", order.price),
+                              m("p", "Stock: ", order.stock),
+                              m("p", orderSpecifiers(JSON.parse(order.specifiers)))
+                        )
                         //m("p", "Width: ", JSON.parse(order.specifiers).width),
                         //m("p", "Diameter: ", JSON.parse(order.specifiers).diameter),
                         //m("button", {onclick: function() {}}, "Form")

@@ -8,22 +8,16 @@ let invoiceTable = {
     view: function () {
         return [
             m("h1", "Inleverans"),
-            m("table.table.table-scroll.table-striped", [
-                m("thead", [
-                    m("th", "Name"),
-                    m("th", "Price"),
-                    m("th", "Fakturadatum"),
-                    m("th", "Förfallodatum")
-                ])
-            ]),
-            m("tbody", invoicesModel.invoices.map(function(invoice) {
-                return m("tr", [
-                    m("td", invoice.name),
-                    m("td", invoice.total_price),
-                    m("td", invoice.creation_date),
-                    m("td", invoice.due_date)
+            m("table.table.table-striped.table-stacked",
+            invoicesModel.invoices.map(function(invoice) {
+                return m("thead.invoice", [
+                    m("td[data-title='Namn']", invoice.name),
+                    m("td[data-title='Pris']", invoice.total_price),
+                    m("td[data-title='Fakturadatum']", invoice.creation_date ?? " "),
+                    m("td[data-title='Förfallodatum']", invoice.due_date ?? " ")
                 ]);
             })),
+
             m(m.route.Link, {
                 selector: "button",
                 href: "/inform",

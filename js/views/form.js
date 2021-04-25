@@ -7,7 +7,7 @@ import { deliveries } from "../models/deliveries.js";
 let form = {
     oninit: products.loadList,
     view: function() {
-        return m("form", {
+        return m("form.login-form", {
             onsubmit: function(event) {
                 event.preventDefault();
                 deliveries.save();
@@ -27,12 +27,13 @@ let form = {
                 value: deliveries.current.delivery_date
             }),
             m("label.input-label", "Comment:"),
-            m("input.input[type=text][placeholder=Comment]", {
+            m("input.input[type=textarea][placeholder=Comment]", {
                 oninput: function (e) {
                     deliveries.current.comment = e.target.value;
                 },
                 value: deliveries.current.comment
             }),
+            m("label.input-label", "Item:"),
             m("select.input", {
                 onchange: function (e) {
                     console.log(e.target.value.split(","));
@@ -43,7 +44,7 @@ let form = {
                 return m("option", {value: [product.id, product.name]},
                     product.id + " - " + product.name);
             })),
-            m("input[type=submit][value=Save].button", "Spara")
+            m("input[type=submit][value=Save].button.form-button", "Spara")
         ]);
     }
 };

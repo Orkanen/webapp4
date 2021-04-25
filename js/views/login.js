@@ -6,7 +6,7 @@ let login = {
     view: function () {
         return [
             m("h1", "Log In"),
-            m("form", {
+            m("form.login-form", {
                 onsubmit: function (event) {
                     event.preventDefault();
                     auth.login();
@@ -26,7 +26,7 @@ let login = {
                     },
                     value: auth.password
                 }),
-                m("input[type=submit][value=Log in].button", "Log In"),
+                m("input[type=submit][value=Log in].login-button", "Log In"),
                 m(m.route.Link, {
                     selector: "button",
                     href: "/register",

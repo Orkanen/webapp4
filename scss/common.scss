@@ -1,0 +1,8 @@
+@use 'sass:color';
+@import '../../node_modules/normalize.css/normalize.css';
+@import '../shared/fontawesome/scss/fontawesome.scss';
+$fa-font-path: '../shared/fontawesome/webfonts';
+@import '../shared/fontawesome/scss/brands';
+@import '../shared/fontawesome/scss/solid';
+@import '../shared/fontawesome/scss/regular';
+@import url('https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&display=swap');
