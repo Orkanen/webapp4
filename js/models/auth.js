@@ -1,6 +1,6 @@
 import m from "mithril";
 
-import { baseUrl, apiKey, token } from "../vars.js";
+import { baseUrl, apiKey } from "../vars.js";
 
 let auth = {
     url: `${baseUrl}/auth/login`,
@@ -54,7 +54,7 @@ let auth = {
 
                 auth.token = result.data.token;
                 return m.route.set("/home");
-              });
+            });
         });
     }
 };

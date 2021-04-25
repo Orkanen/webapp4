@@ -1,14 +1,13 @@
 import m from "mithril";
 
 import { orders } from "../models/orders.js";
-import { deliveries } from "../models/deliveries.js";
 import { invoicesModel } from "../models/invoices.js";
 
 var groupVisible = false;
 
 var log = function () {
-    console.log("group is now visible")
-}
+    console.log("group is now visible");
+};
 
 let inForm = {
     oninit: orders.loadList,
@@ -54,13 +53,13 @@ let inForm = {
                 m("div.deliveries", orders.current_items.map(function (order) {
                     return m("div.invoice", [
                         m("tr",
-                              m("p", order.name),
-                              m("p", order.article_number),
-                              m("p", "Amount: ", order.amount),
-                              m("p", order.description),
-                              m("p", "Price: ", order.price),
-                              m("p", "Stock: ", order.stock),
-                              m("p", orderSpecifiers(JSON.parse(order.specifiers)))
+                            m("p", order.name),
+                            m("p", order.article_number),
+                            m("p", "Amount: ", order.amount),
+                            m("p", order.description),
+                            m("p", "Price: ", order.price),
+                            m("p", "Stock: ", order.stock),
+                            m("p", orderSpecifiers(JSON.parse(order.specifiers)))
                         )
                         //m("p", "Width: ", JSON.parse(order.specifiers).width),
                         //m("p", "Diameter: ", JSON.parse(order.specifiers).diameter),
@@ -81,9 +80,9 @@ function orderSpecifiers(e) {
         return [
             m("p", "Length: ", e.length),
             m("p", "Width: ", e.width)
-        ]
+        ];
     }
-    return m("p", "Diameter: ", e.diameter)
+    return m("p", "Diameter: ", e.diameter);
     // no longer triggers a redraw when the div is clicked
 }
 

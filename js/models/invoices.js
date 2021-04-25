@@ -2,7 +2,6 @@ import m from "mithril";
 
 import { baseUrl, apiKey } from "../vars.js";
 
-import { orders } from "./orders";
 import { auth } from "./auth.js";
 
 let invoicesModel = {
@@ -19,7 +18,7 @@ let invoicesModel = {
             }
         }).then(function(result) {
             console.log(result.data);
-            invoicesModel.invoices = result.data
+            invoicesModel.invoices = result.data;
         });
     },
     createInvoice: function(e, t) {

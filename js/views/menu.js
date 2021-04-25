@@ -28,6 +28,6 @@ let menu = {
             m("main.container", vnode.children)
         ];
     }
-}
+};
 
 export { menu };

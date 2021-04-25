@@ -36,8 +36,8 @@ let orders = {
             //console.log(result.data);
             orders.current_items = [];
             result.data.order_items.forEach(element => {
-                orders.current_items.push(element)
-                orders.total += (element.price * element.amount)
+                orders.current_items.push(element);
+                orders.total += (element.price * element.amount);
             });
             //console.log(orders.total);
             //console.log(orders.current_items);
@@ -57,7 +57,7 @@ let orders = {
             orders.list = [];
             orders.current_items = [];
             m.route.set("/");
-        })
+        });
     }
 
 

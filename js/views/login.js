@@ -35,6 +35,6 @@ let login = {
             ])
         ];
     }
-}
+};
 
 export { login };
